@@ -1,0 +1,67 @@
+import cv2
+import os
+import numpy as np
+
+# conda install -c conda-forge tesseract
+# conda install -c brianjmcguirk pyocr
+
+def main():
+    # position = [968, 999, 1020, 1041]
+    # position = [725, 734, 743]
+    position = [1005, 1023, 1035, 1047]
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\137-4.jpg" # イワーク4000
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\019-2.jpg" # ドダイトス4113
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\097-1.jpg" # スナバア4222
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\188-2.jpg" # オンバット4333
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\015-3.jpg" # コアルヒー4644
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\006-2.jpg" # ピジョット4455
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\036-2.jpg" # タブンネ4541
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\026-1.jpg" # ニンフィア5066
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\066-2.jpg" # メブキジカ4777
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\022-3.jpg" # キュワワー4488
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\034-4.jpg" # ムックル4831
+    # target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\090-4.jpg" # マッギョ4999
+    target_img_path = "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\206-1.jpg"
+
+    img = cv2.imread(target_img_path, cv2.IMREAD_GRAYSCALE)
+    img_temp = img[243 + int(0 * 31.4) : 243 + int(0 * 31.4) + 20, position[0] : position[0] + 13 ]
+    np.save("d:/GitRoot/PSnapOCR/Descriptors/ScoreSmall_b", img_temp)
+    showImg(img_temp)
+
+    """
+    detector = cv2.AKAZE_create()
+    yohaku = 10
+    position = [968, 999, 1020, 1041]
+    target_img_path = os.path.join("d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\077-3.jpg")
+    ## 画像読み込み
+    img = cv2.imread(target_img_path, cv2.IMREAD_GRAYSCALE)
+    ## 2値化
+    threshold = 150
+    _, img_binary = cv2.threshold(img, threshold, 255, cv2.THRESH_BINARY)
+
+    ## ポケモンの図鑑No.を検出
+    img = []
+    for i in range(4):
+        img_temp = img_binary[199 : 233, position[i] : position[i] + 21 ]
+        img_temp = cv2.copyMakeBorder(img_temp, yohaku, yohaku, yohaku,yohaku, cv2.BORDER_CONSTANT,value=[255,255,255])
+        img_temp = cv2.resize(img_temp, (int(img_temp.shape[1] * 10), int(img_temp.shape[0] * 10)))
+        img.append(img_temp)
+        # showImg(img_temp)
+    
+    # ORB
+    des = detector.detectAndCompute(img[3], None)[1]
+    np.save("d:/GitRoot/PSnapOCR/Descriptors/ScoreLarge_0", des)
+
+    # 確認用
+    # kp = detector.detect(img[1])
+    # showImg(cv2.drawKeypoints(img[1], kp, None, flags=4))
+    """
+
+
+def showImg(img):
+    cv2.imshow("test", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
