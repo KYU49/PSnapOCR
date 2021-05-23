@@ -1,4 +1,11 @@
-testData
+__pycache__/
+build/
+dist/
+images/
+testData/
 *.csv
+*.jpg
+*.spec
 botsu
 getDescriptors
+test*

@@ -3,7 +3,7 @@ import os
      
 def main():
     # 拡張子.jpgのファイルを取得する
-    path = "D:/GitRoot/PSnapOCR/testData/機械学習するならそれ用/22/*.jpg"
+    path = "D:/GitRoot/PSnapOCR/testData/*.jpg"
      
     # ファイルを取得する
     flist = glob.glob(path)
@@ -12,7 +12,7 @@ def main():
     star = 1
     no = 1
     for file in flist:
-      os.rename(file, "D:/GitRoot/PSnapOCR/testData/機械学習するならそれ用/22/" + str(no).zfill(3) + "-" + str(star) + ".jpg")
+      os.rename(file, "D:/GitRoot/PSnapOCR/testData/" + str(no).zfill(3) + "-" + str(star) + ".jpg")
       star = star + 1
       if(star > 4):
           star = 1

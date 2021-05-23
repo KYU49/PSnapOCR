@@ -10,27 +10,12 @@ import datetime
 
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
     # ファイル名用に時刻取得
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
     ymdhms = now.strftime("%Y%m%d%H%M%S")
-    test =glob.glob("./testData/forCalc/*.jpg")
+    test =glob.glob("./images/*.jpg")
     
-    """
-    test = [
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\137-4.jpg", # イワーク4000
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\019-2.jpg", # ドダイトス4113
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\097-1.jpg", # スナバア4222
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\188-2.jpg", # オンバット4333
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\015-3.jpg", # コアルヒー4644
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\006-2.jpg", # ピジョット4455
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\036-2.jpg", # タブンネ4541
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\026-1.jpg", # ニンフィア5066
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\066-2.jpg", # メブキジカ4777
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\022-3.jpg", # キュワワー4488
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\034-4.jpg", # ムックル4831
-        "d:\\GitRoot\\PSnapOCR\\testData\\forCalc\\090-4.jpg" # マッギョ4999
-    ]
-    """
     # 結果入力の初期化
     result = []
     for i in range(214):
@@ -185,12 +170,6 @@ def predict(img, img_temp):
                     predict = j
         result = result + predict * pow(10, len(img) - i - 1)
     return result
-
-
-def showImg(img):
-    cv2.imshow("test", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
