@@ -9,7 +9,7 @@ conda install -c conda-forge opencv
 `
 
 ### ○ PythonがインストールされていないWindowsの場合
-* 上部のファイルリスト(表示されていない場合はView codeをクリック)から、「PSnapOCR_win.zip」をダウンロード、解凍する
+* [Google Drive](https://drive.google.com/file/d/1jZ3jPPPU9Itu6GTmtn3XO3qdfVny1gQQ/view?usp=sharing)から、「PSnapOCR_win.zip」をダウンロード、解凍する
 
 ### ○ ここから共通
 
