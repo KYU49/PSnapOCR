@@ -57,6 +57,8 @@ conda install -c conda-forge opencv
 ## What's This?
 This tool recognizes screenshots of New Pokémon Snap Photodex and exports the score data to a csv file.
 
+The exported data can be easily registered by using [this Google Spreadsheet](https://docs.google.com/spreadsheets/d/1iP0DA5Ce3V9_AqayWOorvx85n3LNy5c2PkOq_CHcb2A/edit?usp=sharing).
+
 This tool is an unofficial fan-made application and is not affiliated with any Pokémon related company.
 
 
