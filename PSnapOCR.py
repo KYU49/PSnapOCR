@@ -5,9 +5,6 @@ import numpy as np
 import glob
 import datetime
 
-# conda install -c conda-forge tesseract
-# conda install -c brianjmcguirk pyocr
-
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
