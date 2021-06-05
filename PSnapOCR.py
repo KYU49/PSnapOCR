@@ -53,18 +53,19 @@ def main():
             f.write("\n")
 
 def getStar(img):
-    ## 2値化
-    threshold = 150
-    _, img_binary = cv2.threshold(img, threshold, 255, cv2.THRESH_BINARY)
-
     ## 星の数を検出
     # 切り出し img[top : bottom, left : right]
-    img_stars = img_binary[64 : 64 + 30, 199 : 199 + 122]
+    img_stars = img[64 : 64 + 30, 199 : 199 + 122]
+
     # 中埋め
-    cv2.floodFill(img_stars, None, (0,0), (0,0,0),flags=4)
+    cv2.floodFill(img_stars, None, (0, 0), (0, 0, 0), loDiff=(50, 50, 50), upDiff=(50, 50, 50), flags=(4 | cv2.FLOODFILL_FIXED_RANGE))
+
+    ## 2値化
+    threshold = 0
+    _, img_binary = cv2.threshold(img_stars, threshold, 255, cv2.THRESH_BINARY)
 
     # 星の数を算出
-    contours, _ = cv2.findContours(img_stars, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    contours, _ = cv2.findContours(img_binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     return len(contours)
 
 
