@@ -21,7 +21,9 @@ conda install -c conda-forge opencv
 `
 
 ### ○ PythonがインストールされていないWindowsの場合
+* 上部のファイルリスト(表示されていない場合はView codeをクリック)から、「PSnapOCR.zip」をダウンロード、解凍する
 * [Google Driveから、「PSnapOCR_win.zip」をダウンロード](https://drive.google.com/file/d/1jZ3jPPPU9Itu6GTmtn3XO3qdfVny1gQQ/view?usp=sharing)、解凍する
+* 解凍して出てきたフォルダ内にある"epy", "main.cmd"をPSnapOCRの直下(PSnapOCR.pyと同じディレクトリ)にコピーする。
 
 ### ○ ここから共通
 
@@ -39,11 +41,6 @@ conda install -c conda-forge opencv
 
 ## PSnapOCR_winの内容物
 * main.cmd: Pythonを動かすためのバッチファイル
-* PSnapOCR_win.py: 本体
-* Descriptors: OCRに必要な画像のデータ
-* images: ここにスクリーンショットを保存する
-* LICENSE: MIT License
-* README.md: このファイル
 * epy: スタンドアローンで動くPython (embeddable python)
 
 
@@ -72,7 +69,9 @@ conda install -c conda-forge opencv
 `
 
 ### For Windows Users WITHOUT Python
+* Download and unzip the "PSnapOCR.zip" from the above file list (Click "View code" if hidden)
 * Download and unzip the ["PSnapOCR.zip" from Google Drive](https://drive.google.com/file/d/1jZ3jPPPU9Itu6GTmtn3XO3qdfVny1gQQ/view?usp=sharing)
+* Copy the contained files, "epy" and "main.cmd", to the root directory of PSnapOCR.
 
 ### Common
 * Open the Photodex on New Pokemon Snap and take screenshots
@@ -89,11 +88,6 @@ conda install -c conda-forge opencv
 
 ## Files contained in PSnapOCR_win
 * main.cmd: Batch file to run Python
-* PSnapOCR_win.py: Main program
-* Descriptors: Image data for OCR
-* images: Put screenshots into this directory
-* LICENSE: MIT License
-* README.md: This file
 * epy: embeddable python
 
 
