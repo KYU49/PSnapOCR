@@ -32,6 +32,34 @@ conda install -c conda-forge opencv
 * PSnapOCR.pyをPythonで実行 (PSnapOCR_winの場合は、「main.cmd」をクリックで実行される)
 * *.csvファイルが2つ(Spreadsheet貼り付け用と、詳細なテーブル)生成されるはず
 
+## 出力されるファイルについて
+* 日付_detail.csv: 写真のポケモンの図鑑番号、星の数、合計スコア、スコアの詳細を全てまとめたファイル
+* 日付_sum.csv: 入力した写真の中でスコアが最高のものに関して、各ポケモンの各☆ごとにまとめたファイル
+* 日付_cs-script.txt: Cyberscoreにスコアを簡単に登録することができるJavaScriptが記載されたファイル
+### cs-scriptの使い方
+#### スコア登録
+* FirefoxもしくはChromeで[Cyberscore](https://cyberscore.me.uk/game/2785)を開く
+* 「+ Submit records」を開く
+* 「1★ Photos」にチェック
+* 「Edit selected records」をクリック
+* 「set ALL to:」にある「Plat form:」を「Switch」に設定
+* 開発者ツールを開く(有効になっているならF12で開く)
+* Firefoxなら「コンソール」、Chromeなら「Console」タブを開く
+* cs-scriptに出力されたコード("a=[[..."の方)を、コンソールに入力(Firefoxの場合はセキュリティエラーが出るので従ってください)。
+* よく確認してから「Save changes」をクリック。
+* 「2★ Photos」「3★ Photos」「4★ Photos」についても同じ作業を行う。
+#### Proof画像の登録方法
+* FirefoxもしくはChromeで[Cyberscore](https://cyberscore.me.uk/game/2785)を開く
+* 「Submit proofs」を開く
+* 「Upload proofs from your device」を選択
+* 開発者ツールを開く(有効になっているならF12で開く)
+* Firefoxなら「コンソール」、Chromeなら「Console」タブを開く
+* cs-scriptに出力されたコード(let arr =..."の方)を、コンソールに入力(Firefoxの場合はセキュリティエラーが出るので従ってください)。
+* ページ上部のナビゲーションバー(Home, Games, Scoreboards,...って書いてあるやつ)の下にファイルをアップロードするボタンが現れる
+* そのボタンから、PSnapOCR内の「images」ディレクトリの画像ファイルを全て選択する
+* 元の画面に戻ると、自動的に画像ファイルが選択されている
+* 各ポケモンごとに手動で「Upload proof」をクリックする(セキュリティとサーバー負担の問題で手動)
+
 ## PSnapOCRの内容物
 * PSnapOCR.py: 本体
 * Descriptors: OCRに必要な画像のデータ
