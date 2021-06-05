@@ -8,8 +8,8 @@ Newポケモンスナップのスコアをスクリーンショットから取�
 214 x 4枚の写真から手入力でスコアを転記すると、2時間くらいかかるかと思いますが、  
 全スクショを撮るのに約15分、ツールを使うのに数分しかかからないため、だいぶ楽です。
 
-また、出力データは[こちらのGoogle Spreadsheet](https://docs.google.com/spreadsheets/d/1Mnp-3_3Km-XTV7gaGvMmpEPVKqxx2k4njOneIy2Eth4/edit?usp=sharing)にコピペできるようになっています。
-
+また、出力データは[こちらのGoogle Spreadsheet](https://docs.google.com/spreadsheets/d/1Mnp-3_3Km-XTV7gaGvMmpEPVKqxx2k4njOneIy2Eth4/edit?usp=sharing)にコピペできるようになっているほか、  
+[Cyberscore](https://cyberscore.me.uk/game/2785)に登録するようのJavaScriptのコード(長いので開発者ツールのコンソールで使用)も同時に出力されます。
 
 ## 使い方
 ### ○ Pythonがインストールされている場合
