@@ -4,9 +4,11 @@ build/
 dist/
 images/
 testData/
+originalJS/
 *.csv
 *.jpg
 *.spec
+*.txt
 botsu
 getDescriptors
 test*

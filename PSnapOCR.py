@@ -18,7 +18,12 @@ def main():
     for i in range(214):
         result.append([0, 0, 0, 0])
 
-    with open("./" + ymdhms + ".csv", "w") as f:
+    # ハイスコア画像のファイル名保存
+    highImg = []
+    for i in range(214):
+        highImg.append(["", "", "", ""])
+
+    with open("./" + ymdhms + "_detail.csv", "w") as f:
         # 画像読み込み
         for i, t in enumerate(test):
             img = cv2.imread(t, cv2.IMREAD_GRAYSCALE)
@@ -32,6 +37,7 @@ def main():
             f.write(str(scoreSum))
             if result[zukanNo - 1][starNum - 1] < scoreSum:
                 result[zukanNo - 1][starNum - 1] = scoreSum
+                highImg[zukanNo - 1][starNum - 1] = os.path.split(t)[1]
             for j in range(6):
                 f.write(", ")
                 f.write(str(getEachScores(img, j)))
@@ -51,7 +57,50 @@ def main():
                 else:
                     f.write(str(result[i][j]))
             f.write("\n")
+    
+    # cs書き出し用
+    with open("./" + ymdhms + "_cs-script.txt", "w", encoding="utf-8") as f:
+        f.write("* Score upload tool\n")
+        f.write("Open Cyberscore by Chrome or Firefox of PC (Not IE or Safari)\n")
+        f.write("https://cyberscore.me.uk/game/2785\n")
+        f.write("Click \"+ Submit records\"\n")
+        f.write("Check \"1★ Photos\" and click \"Edit selected records\"\n")
+        f.write("Set \"Plat form:\" to \"Switch\".\n")
+        f.write("Open Developer Tools (If enabled, F12) -> Open \"Console\" tab.\n")
+        f.write("Copy the below codes and paste the console (Attention is shown if Firefox).\n")
+        f.write("Click \"Save changes\"\n")
+        f.write("Repeat  for \"2★ Photos\", \"3★ Photos\", \"4★ Photos\"\n\n")
 
+        f.write("a=[")
+        for i in range(len(result[0])):
+            f.write("[")
+            for j in range(len(result)):
+                f.write(str(result[j][i]))
+                f.write(",")
+            f.write("0],")   # 面倒なので、,が残らないように0を入れておく
+        f.write("[]")   # 面倒なので、,が残らないように空配列を入れておく
+
+        f.write("];for(p=0;p<214;p++){for(s=0;s<4;s++){e=document.getElementsByName((464550+p+s*214)+'-input1')[0];if(e){e.value=a[s][p];}}}\n\n")
+        f.write("* Proofs upload tool\n")
+        f.write("Use FireFox or Chrome\n")
+        f.write("Open \"Submit proofs\" -> \"Upload proofs from your device\"\n")
+        f.write("-> Open \"Developer tool\" in your browser (F12 key)\n")
+        f.write("-> Open \"Console\" tab -> Copy & paste the below codes\n")
+        f.write("-> File button is shown below the navigation bar (Home, Games, Scoreboards, The site, Forum, Search[])\n")
+        f.write("-> Upload all of images in \"images\" directory\n")
+        f.write("-> Appropriate files are input into each row.\n")
+        f.write("-> Click each \"Upload proof\" button manually\n\n")
+        f.write("let arr = {")
+        for i in range(len(highImg)):
+            for j in range(len(highImg[0])):
+                if(highImg[i][j] != ""):
+                    f.write(str(464550 + i + j * 214))
+                    f.write(":\"")
+                    f.write(str(highImg[i][j]))
+                    f.write("\",")
+        f.write("0:\"\"};fileInput = document.createElement(\"input\");fileInput.type = \"file\";fileInput.multiple = true;fileInput.addEventListener(\"change\", e => {const {files} = e.target;for(let i = 0; i < document.forms.length; i++){let tempForm = document.forms[i];if(!tempForm.chart_id){continue;}const id = tempForm.chart_id.value;if(id in arr){const input = tempForm.proof_file;const fileName = arr[id];for(let j = 0; j < files.length; j++){let file = files[j];if(file.name == fileName){const dt = new DataTransfer();dt.items.add(file);input.files = dt.files;break;}}}}}, false);const pageRoot = document.getElementById(\"pagefull\");pageRoot.insertBefore(fileInput, pageRoot.firstChild);\n")
+        #TODO 自動でUpload proof押してくれるツール欲しいよね
+        
 def getStar(img):
     ## 星の数を検出
     # 切り出し img[top : bottom, left : right]
