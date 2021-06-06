@@ -60,6 +60,27 @@ conda install -c conda-forge opencv
 * 元の画面に戻ると、自動的に画像ファイルが選択されている
 * 各ポケモンごとに手動で「Upload proof」をクリックする(セキュリティとサーバー負担の問題で手動)
 
+※どうしても手動が面倒な場合は、ブラウザのポップアップブロックを無効にした後、  
+　下記コードをコンソールに入れれば自動でクリックが行われますが、  
+　PCのスペックやサーバーからの応答、ブラウザの挙動で不具合が出まくります。  
+　そのため、このコードの使い方に関する質問は一切受け付けません。  
+　また、大量のタブが開き、開きすぎるとブラウザがそれ以上のタブを抑制するので、  
+　「このタブより右のタブを閉じる」などを定期的に押す必要があります。
+
+```
+for(let i = 0; i < document.forms.length; i++){
+    let tempForm = document.forms[i];
+    if(!tempForm.chart_id){
+        continue;
+    }
+    setTimeout(
+        function(f){
+            f.click();
+        }
+    , 1000 * i, tempForm[tempForm.length - 1]);
+}
+```
+
 ## PSnapOCRの内容物
 * PSnapOCR.py: 本体
 * Descriptors: OCRに必要な画像のデータ
