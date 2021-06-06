@@ -81,7 +81,7 @@ def main():
         f.write("[]")   # 面倒なので、,が残らないように空配列を入れておく
 
         f.write("];for(p=0;p<214;p++){for(s=0;s<4;s++){e=document.getElementsByName((464550+p+s*214)+'-input1')[0];if(e){e.value=a[s][p];}}}\n\n")
-        f.write("* Proofs upload tool\n")
+        f.write("* Proofs upload assist tool\n")
         f.write("Use FireFox or Chrome\n")
         f.write("Open \"Submit proofs\" -> \"Upload proofs from your device\"\n")
         f.write("-> Open \"Developer tool\" in your browser (F12 key)\n")
@@ -98,8 +98,16 @@ def main():
                     f.write(":\"")
                     f.write(str(highImg[i][j]))
                     f.write("\",")
-        f.write("0:\"\"};fileInput = document.createElement(\"input\");fileInput.type = \"file\";fileInput.multiple = true;fileInput.addEventListener(\"change\", e => {const {files} = e.target;for(let i = 0; i < document.forms.length; i++){let tempForm = document.forms[i];if(!tempForm.chart_id){continue;}const id = tempForm.chart_id.value;if(id in arr){const input = tempForm.proof_file;const fileName = arr[id];for(let j = 0; j < files.length; j++){let file = files[j];if(file.name == fileName){const dt = new DataTransfer();dt.items.add(file);input.files = dt.files;break;}}}}}, false);const pageRoot = document.getElementById(\"pagefull\");pageRoot.insertBefore(fileInput, pageRoot.firstChild);\n")
-        #TODO 自動でUpload proof押してくれるツール欲しいよね
+        f.write("0:\"\"};fileInput = document.createElement(\"input\");fileInput.type = \"file\";fileInput.multiple = true;fileInput.addEventListener(\"change\", e => {const {files} = e.target;for(let i = 0; i < document.forms.length; i++){let tempForm = document.forms[i];if(!tempForm.chart_id){continue;}const id = tempForm.chart_id.value;if(id in arr){const input = tempForm.proof_file;const fileName = arr[id];for(let j = 0; j < files.length; j++){let file = files[j];if(file.name == fileName){const dt = new DataTransfer();dt.items.add(file);input.files = dt.files;break;}}}}}, false);const pageRoot = document.getElementById(\"pagefull\");pageRoot.insertBefore(fileInput, pageRoot.firstChild);\n\n")
+        f.write("* \"Upload proof\" automatic click tool\n")
+        f.write("This tool may not work properly depending on your environment, \nso I do not provide any support for it.\n")
+        f.write("Disable popup blocker.\n")
+        f.write("Replace \"1\" in the first line of the below script with \"(the number of seconds it takes to upload) + 3\".\n")
+        f.write("Use the developer tool of Firefox, not Chrome\n")
+        f.write("Attention: Tremendous tabs will be opened, so close them accordingly.\n")
+        f.write("\n")
+        f.write("let interval = 1;\nfor(let i = 0; i < document.forms.length; i++){\n    let tempForm = document.forms[i];\n    if(!tempForm.chart_id){\n        continue;\n    }\n    setTimeout(\n        function(f){\n            f.click();\n        }\n    , interval * 1000 * i, tempForm[tempForm.length - 1]);\n}\n")
+
         
 def getStar(img):
     ## 星の数を検出

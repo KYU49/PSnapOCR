@@ -64,10 +64,13 @@ conda install -c conda-forge opencv
 　下記コードをコンソールに入れれば自動でクリックが行われますが、  
 　PCのスペックやサーバーからの応答、ブラウザの挙動で不具合が出まくります。  
 　そのため、このコードの使い方に関する質問は一切受け付けません。  
+　コードを使う場合は、1行目の「1」を「アップロードにかかる秒数+3」  
+　に変更してください(サーバーの同時接続数の関係で公式から指示されてる)。  
 　また、大量のタブが開き、開きすぎるとブラウザがそれ以上のタブを抑制するので、  
 　「このタブより右のタブを閉じる」などを定期的に押す必要があります。
 
 ```
+let interval = 1;    // ここにアップロードにかかる秒数+3秒を設定してください。
 for(let i = 0; i < document.forms.length; i++){
     let tempForm = document.forms[i];
     if(!tempForm.chart_id){
@@ -77,7 +80,7 @@ for(let i = 0; i < document.forms.length; i++){
         function(f){
             f.click();
         }
-    , 1000 * i, tempForm[tempForm.length - 1]);
+    , interval * 1000 * i, tempForm[tempForm.length - 1]);
 }
 ```
 
