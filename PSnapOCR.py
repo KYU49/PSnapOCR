@@ -75,9 +75,12 @@ def main():
         for i in range(len(result[0])):
             f.write("[")
             for j in range(len(result)):
-                f.write(str(result[j][i]))
+                f.write("\"")
+                if(result[j][i] != 0):
+                    f.write(str(result[j][i]))
+                f.write("\"")
                 f.write(",")
-            f.write("0],")   # 面倒なので、,が残らないように0を入れておく
+            f.write("\"\"],")   # 面倒なので、,が残らないように0を入れておく
         f.write("[]")   # 面倒なので、,が残らないように空配列を入れておく
 
         f.write("];for(p=0;p<214;p++){for(s=0;s<4;s++){e=document.getElementsByName((464550+p+s*214)+'-input1')[0];if(e){e.value=a[s][p];}}}\n\n")

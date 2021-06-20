@@ -1,5 +1,8 @@
 # PSnapOCR
+ver. 210620
+
 English text is shown below the Japanese.
+
 ## 概略
 Newポケモンスナップのスコアをスクリーンショットから取得するツールです。
 
