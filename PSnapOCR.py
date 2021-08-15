@@ -6,6 +6,13 @@ import glob
 import datetime
 
 def main():
+    # ポケモン数に関する定数
+    pNumSum = 234   # ポケモン総数
+    pNum1st = 214   # DLCなしのポケモン数
+    pNum2nd = 234   # 1回目のDLC込のポケモン数
+    pID1st = 464550 # DLCなしのCyberrecordのポケモンIDの最初
+    pID2nd = 472761 # DLCありのCyberrecordのポケモンIDの最初
+
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
     # ファイル名用に時刻取得
@@ -15,12 +22,12 @@ def main():
     
     # 結果入力の初期化
     result = []
-    for i in range(214):
+    for i in range(pNumSum):
         result.append([0, 0, 0, 0])
 
     # ハイスコア画像のファイル名保存
     highImg = []
-    for i in range(214):
+    for i in range(pNumSum):
         highImg.append(["", "", "", ""])
 
     with open("./" + ymdhms + "_detail.csv", "w") as f:
@@ -35,6 +42,7 @@ def main():
             f.write(", ")
             scoreSum = getScoreSum(img)
             f.write(str(scoreSum))
+            # 複数枚同じ図鑑IDのポケモンの写真があった際に、その中での最大値を最高得点として記録する
             if result[zukanNo - 1][starNum - 1] < scoreSum:
                 result[zukanNo - 1][starNum - 1] = scoreSum
                 highImg[zukanNo - 1][starNum - 1] = os.path.split(t)[1]
@@ -83,7 +91,24 @@ def main():
             f.write("\"\"],")   # 面倒なので、,が残らないように0を入れておく
         f.write("[]")   # 面倒なので、,が残らないように空配列を入れておく
 
-        f.write("];for(p=0;p<214;p++){for(s=0;s<4;s++){e=document.getElementsByName((464550+p+s*214)+'-input1')[0];if(e){e.value=a[s][p];}}}\n\n")
+        f.write("];" + \
+            "for(p=0;p<" + str(pNum1st) + ";p++){" + \
+                "for(s=0;s<4;s++){" + \
+                    "e=document.getElementsByName((" + str(pID1st) + "+p+s*" + str(pNum1st) + ")+'-input1')[0];" + \
+                    "if(e){" + \
+                        "e.value=a[s][p];" + \
+                    "}" + \
+                "}" + \
+            "}" + \
+            "for(p=" + str(pNum1st) +";p<" + str(pNum2nd) + ";p++){" + \
+                "for(s=0;s<4;s++){" + \
+                    "e=document.getElementsByName((" + str(pID2nd) + "+p-" + str(pNum1st) + "+s*" + str(pNum2nd - pNum1st) + ")+'-input1')[0];" + \
+                    "if(e){" + \
+                        "e.value=a[s][p];" + \
+                    "}" + \
+                "}" + \
+            "}" + \
+        "\n\n")
         f.write("* Proofs upload assist tool\n")
         f.write("Use FireFox or Chrome\n")
         f.write("Open \"Submit proofs\" -> \"Upload proofs from your device\"\n")
@@ -97,10 +122,16 @@ def main():
         for i in range(len(highImg)):
             for j in range(len(highImg[0])):
                 if(highImg[i][j] != ""):
-                    f.write(str(464550 + i + j * 214))
-                    f.write(":\"")
-                    f.write(str(highImg[i][j]))
-                    f.write("\",")
+                    if(i <= pNum1st):    
+                        f.write(str(pID1st + i + j * pNum1st))
+                        f.write(":\"")
+                        f.write(str(highImg[i][j]))
+                        f.write("\",")
+                    else:
+                        f.write(str(pID2nd + i - pNum1st + j * (pNum2nd - pNum1st)))
+                        f.write(":\"")
+                        f.write(str(highImg[i][j]))
+                        f.write("\",")
         f.write("0:\"\"};fileInput = document.createElement(\"input\");fileInput.type = \"file\";fileInput.multiple = true;fileInput.addEventListener(\"change\", e => {const {files} = e.target;for(let i = 0; i < document.forms.length; i++){let tempForm = document.forms[i];if(!tempForm.chart_id){continue;}const id = tempForm.chart_id.value;if(id in arr){const input = tempForm.proof_file;const fileName = arr[id];for(let j = 0; j < files.length; j++){let file = files[j];if(file.name == fileName){const dt = new DataTransfer();dt.items.add(file);input.files = dt.files;break;}}}}}, false);const pageRoot = document.getElementById(\"pagefull\");pageRoot.insertBefore(fileInput, pageRoot.firstChild);\n\n")
         f.write("* \"Upload proof\" automatic click tool\n")
         f.write("This tool may not work properly depending on your environment, \nso I do not provide any support for it.\n")

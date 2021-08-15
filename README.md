@@ -1,7 +1,11 @@
 # PSnapOCR
-ver. 210620
+ver. 210816
 
 English text is shown below the Japanese.
+
+## 更新履歴
+### 210816
+* 21年8月のDLC対応
 
 ## 概略
 Newポケモンスナップのスコアをスクリーンショットから取得するツールです。
