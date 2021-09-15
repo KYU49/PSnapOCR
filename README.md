@@ -20,7 +20,7 @@ Newポケモンスナップのスコアをスクリーンショットから取�
 
 ## 使い方
 ### ○ Pythonがインストールされている場合
-* 上部のファイルリスト(表示されていない場合はView codeをクリック)から、「PSnapOCR.zip」をダウンロード、解凍する
+* [「PSnapOCR.zip」をダウンロード](../../releases/latest/download/PSnapOCR.zip)、解凍する
 * PythonにOpenCVをインストール (Anacondaを使用しているなら、仮想環境内で以下コマンド)
 
 `
@@ -28,8 +28,8 @@ conda install -c conda-forge opencv
 `
 
 ### ○ PythonがインストールされていないWindowsの場合
-* 上部のファイルリスト(表示されていない場合はView codeをクリック)から、「PSnapOCR.zip」をダウンロード、解凍する
-* [Google Driveから、「PSnapOCR_win.zip」をダウンロード](https://drive.google.com/file/d/1jZ3jPPPU9Itu6GTmtn3XO3qdfVny1gQQ/view?usp=sharing)、解凍する
+* [「PSnapOCR.zip」をダウンロード](../../releases/latest/download/PSnapOCR.zip)、解凍する
+* [「PSnapOCR_win.zip」をダウンロード](../../releases/latest/download/PSnapOCR_win.zip)、解凍する
 * 解凍して出てきたフォルダ内にある"epy", "main.cmd"をPSnapOCRの直下(PSnapOCR.pyと同じディレクトリ)にコピーする。
 
 ### ○ ここから共通
@@ -120,7 +120,7 @@ This tool is an unofficial fan-made application and is not affiliated with any P
 
 ## How to Use
 ### For Phython Users
-* Download and unzip the "PSnapOCR.zip" from the above file list (Click "View code" if hidden)
+* Download and unzip the "[PSnapOCR.zip](../../releases/latest/download/PSnapOCR.zip)".
 * Install OpenCV to your Python (Anaconda user can install it by the following command)
 
 `
@@ -128,9 +128,10 @@ conda install -c conda-forge opencv
 `
 
 ### For Windows Users WITHOUT Python
-* Download and unzip the "PSnapOCR.zip" from the above file list (Click "View code" if hidden)
-* Download and unzip the ["PSnapOCR.zip" from Google Drive](https://drive.google.com/file/d/1jZ3jPPPU9Itu6GTmtn3XO3qdfVny1gQQ/view?usp=sharing)
+* Download and unzip the "[PSnapOCR.zip](../../releases/latest/download/PSnapOCR.zip)".
+* Download and unzip the "[PSnapOCR_win.zip](../../releases/latest/download/PSnapOCR_win.zip)
 * Copy the contained files, "epy" and "main.cmd", to the root directory of PSnapOCR.
+
 
 ### Common
 * Open the Photodex on New Pokemon Snap and take screenshots

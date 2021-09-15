@@ -1,7 +1,6 @@
 __pycache__/
 PSnapOCR_win/
-build/
-dist/
+release/
 images/
 testData/
 originalJS/
