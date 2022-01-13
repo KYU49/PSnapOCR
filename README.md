@@ -4,6 +4,8 @@ ver. 210816
 English text is shown below the Japanese.
 
 ## 更新履歴
+### 220113
+* doc: License情報の記載
 ### 210816
 * 21年8月のDLC対応
 
@@ -157,3 +159,8 @@ conda install -c conda-forge opencv
 * Accuracy of results is not guaranteed, and use at your own risk.
 * I assume no responsibility for anything related to this software.
 * This tool is an unofficial fan-made application and is not affiliated with any Pokémon related company.
+
+## Credit
+This application uses the below open source software.
+* OpenCV © Copyright 2022, OpenCV team ([Apache 2.0](https://github.com/opencv/opencv/blob/master/LICENSE))
+
