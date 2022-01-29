@@ -94,7 +94,7 @@ def main():
         f.write("];" + \
             "for(p=0;p<" + str(pNum1st) + ";p++){" + \
                 "for(s=0;s<4;s++){" + \
-                    "e=document.getElementsByName((" + str(pID1st) + "+p+s*" + str(pNum1st) + ")+'-input1')[0];" + \
+                    "e=document.getElementsByName('records['+(" + str(pID1st) + "+p+s*" + str(pNum1st) + ")+'][input1]')[0];" + \
                     "if(e){" + \
                         "e.value=a[s][p];" + \
                     "}" + \
@@ -102,7 +102,7 @@ def main():
             "}" + \
             "for(p=" + str(pNum1st) +";p<" + str(pNum2nd) + ";p++){" + \
                 "for(s=0;s<4;s++){" + \
-                    "e=document.getElementsByName((" + str(pID2nd) + "+p-" + str(pNum1st) + "+s*" + str(pNum2nd - pNum1st) + ")+'-input1')[0];" + \
+                    "e=document.getElementsByName('records['+(" + str(pID2nd) + "+p-" + str(pNum1st) + "+s*" + str(pNum2nd - pNum1st) + ")+'][input1]')[0];" + \
                     "if(e){" + \
                         "e.value=a[s][p];" + \
                     "}" + \
@@ -122,7 +122,7 @@ def main():
         for i in range(len(highImg)):
             for j in range(len(highImg[0])):
                 if(highImg[i][j] != ""):
-                    if(i <= pNum1st):    
+                    if(i < pNum1st):    
                         f.write(str(pID1st + i + j * pNum1st))
                         f.write(":\"")
                         f.write(str(highImg[i][j]))
