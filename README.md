@@ -1,9 +1,12 @@
 # PSnapOCR
-ver. 210816
+ver. 220129
 
 English text is shown below the Japanese.
 
 ## 更新履歴
+### 220129
+* fix: CyberScoreのname要素名に変更があったため、自動スクリプトの修正
+* fix: 自動proofアップロードでキノココだけ入力されない問題を修正
 ### 220113
 * doc: License情報の記載
 ### 210816
